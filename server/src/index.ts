@@ -24,24 +24,36 @@ io.on('connection', (socket) =>{
     console.log(`user connected ${socket.id}`)
 
     socket.on('join_room', (data) => {
-        const { username, room } = data;
+        const { name, room } = data;
         socket.join(room);
 
-
+        console.log(data);
+        
         let _createdtime_ = Date.now();
         socket.to(room).emit('receive_message',{
-            message: `${username} has joined the Room`,
+            message: `${name} has joined the Room`,
             username: CHAT_BOT,
             _createdtime_
         });
 
         socket.emit('receive_message', {
-            message: `Welcome ${username}`,
+            message: `Welcome ${name}`,
             username: CHAT_BOT,
             _createdtime_
         });
 
-        allUsers.push({id: socket.id, username, room});
+        socket.on('send_message', (data) => {
+            const { name, room, text, _createdtime_} = data;
+            io.in(room).emit('receive_message', (data));
+
+            // db connection to be added here
+            // .......
+            //
+            //
+            //
+        })
+
+        allUsers.push({id: socket.id, name, room});
         let chatRoomUsers = allUsers.filter((user)=>user.room === room);
         socket.to(room).emit('Room_users', chatRoomUsers);  // to other participants
         socket.emit('Room_users', chatRoomUsers);   // to sender
