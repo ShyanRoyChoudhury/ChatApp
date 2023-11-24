@@ -34,8 +34,8 @@ const usernameState = useRecoilValue(usernameAtom);
 const handleclick = () =>{
   setUsernameState(name)
   
-  if(usernameState && roomState){
-    socket?.emit('join_room', { usernameState, roomState});
+  if(name && roomState){
+    socket?.emit('join_room', { name, room:roomState});
     navigate('/chat');
   }else{
     alert('select name or room');

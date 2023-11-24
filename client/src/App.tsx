@@ -10,6 +10,7 @@ import { createContext } from 'react';
 import { Socket } from 'socket.io-client';
 //import { useSetRecoilState } from 'recoil';
 import { Server_URL } from '../config.ts'
+import { Header } from './components/Header.tsx';
 
 const socket = io(Server_URL);
 export const SocketContext = createContext<Socket | null>(null);
@@ -24,6 +25,7 @@ function App() {
     <SocketContext.Provider value={socket}>
     <div>
         <Router>
+          <Header />
           <Routes>
             <Route path="/" element={<JoinRoomPage />} />
             <Route path="chat" element={<ChatPage />} />

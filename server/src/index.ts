@@ -5,6 +5,7 @@ import { Server } from 'socket.io';
 const PORT = 4000;
 const app = express();
 app.use(cors());
+import leaveRoom from '../utils/leaveRoom';
 
 const server = http.createServer(app);
 
@@ -44,7 +45,12 @@ io.on('connection', (socket) =>{
 
         socket.on('send_message', (data) => {
             const { name, room, text, _createdtime_} = data;
-            io.in(room).emit('receive_message', (data));
+            socket.to(room).emit('messages', {
+                message: text,
+                username: name,
+                _createdtime_
+            });
+
 
             // db connection to be added here
             // .......
@@ -57,6 +63,20 @@ io.on('connection', (socket) =>{
         let chatRoomUsers = allUsers.filter((user)=>user.room === room);
         socket.to(room).emit('Room_users', chatRoomUsers);  // to other participants
         socket.emit('Room_users', chatRoomUsers);   // to sender
+
+        socket.on('leave_room', (data)=>{
+            const { name, room } = data;
+            socket.leave(room);
+            console.log('roomleft')
+            let _createdtime_ = Date.now();
+            allUsers = leaveRoom(socket.id, allUsers)
+            socket.to(room).emit('Room_users', allUsers)
+            socket.to(room).emit('receive_message', {
+                message: `${name} has left the chat`,
+                username: CHAT_BOT,
+                _createdtime_
+            })
+        })
     })
 });
 
