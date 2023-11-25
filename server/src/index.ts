@@ -2,7 +2,7 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import { Server } from 'socket.io';
-const PORT = 4000;
+const port = 4000 || process.env.PORT;
 const app = express();
 app.use(cors());
 import leaveRoom from '../utils/leaveRoom';
@@ -101,6 +101,6 @@ io.on('connection', (socket) =>{
     })
 });
 
-server.listen(PORT, ()=>{
-    console.log(`Server  running on port ${PORT}`);
+server.listen(port, ()=>{
+    console.log(`Server  running on port ${port}`);
 });
