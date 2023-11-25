@@ -39,6 +39,7 @@ export default function TextBox({className}: TextBoxProps): React.ReactElement{
           containerProps={{
             className: "min-w-0",
           }}
+          crossOrigin="anonymous"
         />
         <Button
           size="sm"

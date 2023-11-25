@@ -1,8 +1,8 @@
 import { Typography } from "@material-tailwind/react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export function Header(){
-    let navigate = useNavigate()
+    
     return(
         <div className="flex shadow-md border-none">
             <div className="pl-4 p-1 items-center">

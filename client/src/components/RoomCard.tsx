@@ -16,11 +16,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { SocketContext } from '../App';
 
-interface RoomCardProps{
-    className ?: string
-}
 
-export default function RoomCard({className}: RoomCardProps): React.ReactElement{
+export default function RoomCard(): React.ReactElement{
 
 const [ name, setName ] = useState('');
 const setUsernameState = useSetRecoilState(usernameAtom);
@@ -30,7 +27,6 @@ const roomState = useRecoilValue(roomAtom);
 const socket = useContext(SocketContext)
 
 const navigate = useNavigate();
-const usernameState = useRecoilValue(usernameAtom);
 const handleclick = () =>{
   setUsernameState(name)
   
@@ -52,12 +48,12 @@ const handleclick = () =>{
             className="mb-4 grid h-28 place-items-center"
           >
             <Typography variant="h3" color="white">
-              
+              Join
             </Typography>
           </CardHeader>
 
           <CardBody className="flex flex-col gap-4">
-            <Input variant="outlined" name="name" label="Name" className='' onChange={(e)=>{setName(e.target.value)}}/>
+            <Input variant="outlined" name="name" label="Name" onChange={(e)=>{setName(e.target.value)}} crossOrigin="anonymous"/>
             <div className="">
             <div>
               <Select label="Select Room">

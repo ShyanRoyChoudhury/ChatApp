@@ -1,10 +1,8 @@
 import Messages from "./Messages";
 
-interface ChatProps{
-    children?: string;
-}
 
-export function Chat({children}: ChatProps):React.ReactElement{
+
+export function Chat():React.ReactElement{
     return(
         <div className="p-2">
             <Messages />

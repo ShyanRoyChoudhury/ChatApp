@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { SocketContext } from "../../App";
 import { Typography } from "@material-tailwind/react";
 
@@ -10,7 +10,8 @@ interface MessageProps{
 
 const Messages = () => {
     let socket = useContext(SocketContext);
-
+    
+    let messageRef = useRef<HTMLDivElement>(null)
     let [messagesReceived, setMessagesReceived ] = useState<MessageProps[]>([]);
 
     useEffect(():any =>{
@@ -42,6 +43,15 @@ const Messages = () => {
             ])
         })
     }, [socket])
+/*
+    useEffect(() => {
+        if(messageRef.current){
+            messageRef.current.scrollIntoView({ behavior: 'smooth'})
+        }
+    },[messageRef])
+
+*/  // not working needss fix
+
 
     function formatDateFromTimeStamp(timestamp: number){
         const date = new Date(timestamp);
@@ -49,7 +59,7 @@ const Messages = () => {
     }
 
     return(
-        <div>
+        <div className="overflow-y-auto">
             {messagesReceived.map((msg, i)=>(
             <div className="bg-teal-500 relative">
                 <div key={i} className="flex">
@@ -60,6 +70,7 @@ const Messages = () => {
                 <br />
             </div>
             ))}
+            <div ref={messageRef}></div>
 
         </div>
     )

@@ -1,15 +1,12 @@
-import { usernameAtom } from "../../store/atoms/usernameState";
+
 import TextBox from "./TextBox";
-import { useRecoilValue } from 'recoil';
+
 import { Sidebar } from "./Sidebar";
 import { Chat } from "./chat/Chat";
-interface ChatRoomProps{
-    className?: string
-}
 
-function ChatPage({ className }: ChatRoomProps): React.ReactElement{
 
-    let usernameState = useRecoilValue(usernameAtom) 
+function ChatPage(): React.ReactElement{
+ 
     
     return(
         <div className="md:grid lg:grid-cols-4 ">
