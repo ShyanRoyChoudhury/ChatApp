@@ -4,14 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const http_1 = __importDefault(require("http"));
+var http = require('http');
 const cors_1 = __importDefault(require("cors"));
 const socket_io_1 = require("socket.io");
-const PORT = 4000;
+const port = 4000 || process.env.PORT;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 const leaveRoom_1 = __importDefault(require("../utils/leaveRoom"));
-const server = http_1.default.createServer(app);
+const server = http.createServer(app);
 const io = new socket_io_1.Server(server, {
     cors: {
         origin: 'http://localhost:5173',
@@ -83,6 +83,6 @@ io.on('connection', (socket) => {
         });
     });
 });
-server.listen(PORT, () => {
-    console.log(`Server  running on port ${PORT}`);
+server.listen(port, () => {
+    console.log(`Server  running on port ${port}`);
 });
