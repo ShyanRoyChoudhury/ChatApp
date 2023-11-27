@@ -5,6 +5,12 @@ import { Server } from 'socket.io';
 const port = 3000 || process.env.PORT;
 const app = express();
 app.use(cors());
+app.use((req, res, next)=> {
+    res.header('Access-Control-Allow-Origin', 'https://chatrooom-c84ec.web.app');
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+})
 import leaveRoom from '../utils/leaveRoom';
 
 const server = http.createServer(app);
