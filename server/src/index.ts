@@ -2,7 +2,7 @@ import express from 'express';
 var http = require('http');
 import cors from 'cors';
 import { Server } from 'socket.io';
-const port = 4000 || process.env.PORT;
+const port = 3000 || process.env.PORT;
 const app = express();
 app.use(cors());
 import leaveRoom from '../utils/leaveRoom';
@@ -11,7 +11,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:5173',
+        origin: 'https://chatrooom-c84ec.web.app/',
         methods: ['GET', 'POST'],
     },
 });
