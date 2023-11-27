@@ -6,9 +6,11 @@ const port = 3000 || process.env.PORT;
 const app = express();
 app.use(cors());
 app.use((req, res, next)=> {
-    res.header('Access-Control-Allow-Origin', 'https://chatrooom-c84ec.web.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+      );
     next();
 })
 import leaveRoom from '../utils/leaveRoom';
