@@ -26,11 +26,6 @@ const Messages = () => {
                 }
             ])
         });
-
-        return () => socket?.off('receive_message');
-    },[socket]);
-    
-    useEffect(() =>{
         socket?.on('messages', (data) => {
             console.log(data),
             setMessagesReceived((state)=>[
@@ -42,7 +37,14 @@ const Messages = () => {
                 }
             ])
         })
-    }, [socket])
+
+        return () => {
+            socket?.off('receive_message');
+            socket?.off('messages');
+        }
+    },[socket]);
+    
+    
 /*
     useEffect(() => {
         if(messageRef.current){
@@ -61,7 +63,7 @@ const Messages = () => {
     return(
         <div className="overflow-y-auto">
             {messagesReceived.map((msg, i)=>(
-            <div className="bg-teal-500 relative">
+            <div className="bg-teal-500 relative mb-2 p-2">
                 <div key={i} className="flex">
                     <div><Typography variant="h5">{msg.username}</Typography></div>
                     <div className="absolute right-1">{formatDateFromTimeStamp(msg._createdtime_)}</div>

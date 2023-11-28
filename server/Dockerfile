@@ -9,6 +9,6 @@ RUN npm run build
 
 ENV PORT=4000
 
-EXPOSE 4000
+EXPOSE 3000
 
 CMD ["npm", "start"]
