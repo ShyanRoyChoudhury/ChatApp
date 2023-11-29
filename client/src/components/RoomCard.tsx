@@ -15,7 +15,7 @@ import {
 
 import { useNavigate } from 'react-router-dom';
 import { SocketContext } from '../App';
-
+import { twMerge } from 'tailwind-merge';
 
 export default function RoomCard(): React.ReactElement{
 
@@ -38,41 +38,39 @@ const handleclick = () =>{
   }
 }
   return (
-    <div>
       
-      <div className="flex justify-center">
-        <Card className="w-96">
-          <CardHeader
-            variant="gradient"
-            color="gray"
-            className="mb-4 grid h-28 place-items-center"
-          >
-            <Typography variant="h3" color="white">
-              Join
-            </Typography>
-          </CardHeader>
+    <div className="flex justify-center">
+      <Card className={twMerge(`w-80 md:w-96 bg-myColor-800 bg-opacity-10 rounded-lg`)}>
+        <CardHeader
+          variant="gradient"
+          className="mb-4 grid h-28 place-items-center bg-white bg-opacity-80 hover:bg-green-500"
+        >
+          <Typography variant="h3" className='text-black '>
+            Join
+          </Typography>
+        </CardHeader>
 
-          <CardBody className="flex flex-col gap-4">
-            <Input variant="outlined" name="name" label="Name" onChange={(e)=>{setName(e.target.value)}} crossOrigin="anonymous"/>
-            <div className="">
-            <div>
-              <Select label="Select Room">
-                <Option onClick={()=>setRoomState('Room 1')}>Room 1</Option>
-                <Option onClick={()=>setRoomState('Room 2')}>Room 2</Option>
-                <Option onClick={()=>setRoomState('Room 3')}>Room 3</Option>
-              </Select>
-            </div>
-              
-            </div>
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth onClick={handleclick}>
-              Join Room
-            </Button>
-          </CardFooter>
-        </Card>
-        
-      </div>
+        <CardBody className="flex flex-col gap-4">
+          <Input variant="outlined" name="name" label="Name" className='text-white'  onChange={(e)=>{setName(e.target.value)}} crossOrigin="anonymous"/>
+          <div className="">
+          <div>
+            <Select label="Select Room">
+              <Option onClick={()=>setRoomState('Room 1')}>Room 1</Option>
+              <Option onClick={()=>setRoomState('Room 2')}>Room 2</Option>
+              <Option onClick={()=>setRoomState('Room 3')}>Room 3</Option>
+            </Select>
+          </div>
+            
+          </div>
+        </CardBody>
+        <CardFooter className="pt-0 ">
+          <Button variant="gradient" fullWidth onClick={handleclick}>
+            Join Room
+          </Button>
+        </CardFooter>
+      </Card>
+      
     </div>
+    
   );
 }

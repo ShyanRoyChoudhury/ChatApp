@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root{
+    height: 100%;
+    background-color: #000f0a;
+    color-scheme: dark;
+  }
 .TextBox{
     position: fixed;
     Bottom:0;
