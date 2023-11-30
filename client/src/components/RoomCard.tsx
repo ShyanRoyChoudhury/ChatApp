@@ -42,11 +42,10 @@ const handleclick = () =>{
     <div className="flex justify-center">
       <Card className={twMerge(`w-80 md:w-96 bg-myColor-800 bg-opacity-10 rounded-lg`)}>
         <CardHeader
-          variant="gradient"
           className="mb-4 grid h-28 place-items-center bg-white bg-opacity-80 hover:bg-green-500"
         >
           <Typography variant="h3" className='text-black '>
-            Join
+            chatRooom
           </Typography>
         </CardHeader>
 
@@ -63,8 +62,8 @@ const handleclick = () =>{
             
           </div>
         </CardBody>
-        <CardFooter className="pt-0 ">
-          <Button variant="gradient" fullWidth onClick={handleclick}>
+        <CardFooter className="pt-0">
+          <Button variant="filled" fullWidth onClick={handleclick} className='bg-black font-bold text-sm'>
             Join Room
           </Button>
         </CardFooter>
