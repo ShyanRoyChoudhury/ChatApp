@@ -6,7 +6,7 @@ function LandingPage(){
     return(
         <div>
             <div className="p-12 md:p-20"></div>
-            <div className="px-12 lg:flex lg:pl-20">
+            <div className="px-8 lg:flex lg:pl-20">
                 <div className="lg:w1/2">
                     <Typography variant="h1" className="pb-4 text-4xl md:text-6xl">
                     chatRooom: Where Conversations Come to Life!
