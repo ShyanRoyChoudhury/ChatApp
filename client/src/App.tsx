@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import './App.css'
 
-import JoinRoomPage from './components/JoinRoomPage';
-import ChatPage from "./components/ChatPage";
+import LandingPage from './components/Landing.tsx';
+import ChatPage from "./components/chat/ChatPage.tsx";
 import io from 'socket.io-client';
 import { createContext } from 'react';
 import { Socket } from 'socket.io-client';
@@ -26,7 +26,7 @@ function App() {
         <Router>
           <Header />
           <Routes>
-            <Route path="/" element={<JoinRoomPage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="chat" element={<ChatPage />} />
           </Routes>
         </Router>

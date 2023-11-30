@@ -1,8 +1,8 @@
 
 import TextBox from "./TextBox";
 
-import { Sidebar } from "./Sidebar";
-import { Chat } from "./chat/Chat";
+import { Sidebar } from "../Sidebar";
+import { Chat } from "./Chat";
 
 
 function ChatPage(): React.ReactElement{

@@ -1,10 +1,10 @@
 import React from "react";
 import { Input, Button } from "@material-tailwind/react";
 import { twMerge } from "tailwind-merge";
-import { SocketContext } from "../App";
+import { SocketContext } from "../../App";
 import { useRecoilValue } from "recoil";
-import { usernameAtom } from "../../store/atoms/usernameState";
-import { roomAtom } from "../../store/atoms/roomState";
+import { usernameAtom } from "../../../store/atoms/usernameState";
+import { roomAtom } from "../../../store/atoms/roomState";
 
 type TextBoxProps = {
     className ?: string 
@@ -24,6 +24,7 @@ export default function TextBox({className}: TextBoxProps): React.ReactElement{
         socket?.emit('send_message', {
           name, room, text, _createdtime_
         });
+        setText("")
       }
     }
 
@@ -40,6 +41,11 @@ export default function TextBox({className}: TextBoxProps): React.ReactElement{
             className: "min-w-0",
           }}
           crossOrigin="anonymous"
+          onKeyDown={(e)=>{
+            if(e.key === 'Enter'){
+              handleSendMessage();
+            }
+          }}
         />
         <Button
           size="sm"

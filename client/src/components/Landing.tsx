@@ -2,7 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import { GoChevronDown } from "react-icons/go";
 import RoomCard from "./RoomCard";
 
-function JoinRoomPage(){
+function LandingPage(){
     return(
         <div>
             <div className="p-12 md:p-20"></div>
@@ -34,4 +34,4 @@ function JoinRoomPage(){
     )
 }
 
-export default JoinRoomPage;
+export default LandingPage;
