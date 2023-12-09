@@ -6,8 +6,8 @@ export function Header(){
 
     const isChatPage = location.pathname === '/chat';
     return(
-        <div className="flex">
-            <div className="flex shadow-md border-none mt-12 px-8 lg:pl-12 w-10/12">
+        <div className={`flex ${isChatPage? 'mt-6': 'mt-12'}`}>
+            <div className="flex shadow-md border-none  px-8 lg:pl-12 w-10/12">
                 <div className="lg:pl-12 p-1 items-center">
                 <Link to={'/'}>
                     <img src="/ai(1).png" width={50} height={50} alt="logo" className="opacity-80"/>
@@ -19,7 +19,7 @@ export function Header(){
                     </Link>
                 </div>
             </div>
-            <div className="mt-12 w-2/12">
+            <div className=" w-2/12 pt-2">
                 {isChatPage && <DrawerComponent />}
             </div>
         </div>

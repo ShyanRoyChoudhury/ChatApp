@@ -23,7 +23,7 @@ import { SocketContext } from "../App";
     }, [socket]);
 
     return (
-      <Card className="h-60 overflow-y-scroll w-full">
+      <Card className="h-60 overflow-y-auto w-full">
           {chatRoomUsers.length > 0 && <Typography variant="h5">Users:</Typography>}
         <List>
           {chatRoomUsers.map((user:any) => (
