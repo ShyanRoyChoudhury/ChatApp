@@ -67,7 +67,7 @@ const Messages:React.FC<MessageComponentProps> = ({currentUser}) => {
     return(
         <div className=" flex flex-col">
             {messagesReceived.map((msg, i)=>(
-            <div className={` ${msg.username===currentUser ? "bg-teal-500 ml-auto": "bg-blue-400"} whitespace-normal overflow-y-auto 
+            <div className={` ${msg.username===currentUser ? "bg-teal-700 ml-auto": "bg-blue-500"} whitespace-normal overflow-y-auto 
             overflow-x-hidden w-8/12 relative mb-2 p-2 rounded-md`} style={{ wordWrap: 'break-word' }}>
                 <div key={i} className="flex ">
                     <div>
