@@ -18,7 +18,7 @@ export const SocketContext = createContext<Socket | null>(null);
 
 function App() {
 
-  document.title = "ChatRoom"
+  document.title = "ChatRooom"
 
   return (
     <SocketContext.Provider value={socket}>

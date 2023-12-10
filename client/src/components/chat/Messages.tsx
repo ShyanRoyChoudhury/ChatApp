@@ -70,10 +70,15 @@ const Messages:React.FC<MessageComponentProps> = ({currentUser}) => {
             <div className={` ${msg.username===currentUser ? "bg-teal-700 ml-auto": "bg-blue-500"} whitespace-normal overflow-y-auto 
             overflow-x-hidden w-8/12 relative mb-2 p-2 rounded-md`} style={{ wordWrap: 'break-word' }}>
                 <div key={i} className="flex ">
-                    <div>
-                        <Typography variant="h6">{msg.username}</Typography>
+                    <div className="flex-shrink-0 ">
+                        <Typography variant="h6" >{msg.username}</Typography>
                     </div>
-                    <div className="absolute right-1 text-sm">{formatDateFromTimeStamp(msg._createdtime_)}</div>
+                    <div className="flex-grow">
+                        <div className="flex justify-between items-center p-1">
+                    <div className="ml-auto text-sm">{formatDateFromTimeStamp(msg._createdtime_)}</div>
+
+                        </div>
+                    </div>
                     <br />
                 </div>
                 <div>
