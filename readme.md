@@ -1,6 +1,4 @@
-
-
-# chatRooom 🕐
+# chatRooom 
 
 ## Features
 
@@ -21,7 +19,6 @@
 git clone https://github.com/ShyanRoyChoudhury/ChatApp.git
 cd ChatApp
 
-
 ##Install the dependencies 
 
 # Client
@@ -38,7 +35,7 @@ go to localhost://5173
 # Server
 localhost://3000
 
-#Build the project
+# Build the project
 npm run build ##in respective client and server folder separately
 ```
 
