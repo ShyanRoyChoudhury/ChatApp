@@ -13,7 +13,7 @@
 * Recoil
 * Render
 
-## Build from project 🛠️
+## Run project locally🛠️
 ```sh
 #Clone the project
 git clone https://github.com/ShyanRoyChoudhury/ChatApp.git
@@ -24,10 +24,12 @@ cd ChatApp
 # Client
 cd client
 npm i
+npm run dev
 
 # Server
 cd server
 npm i
+npm run dev
 
 # Local Client
 go to localhost://5173
