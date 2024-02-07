@@ -9,14 +9,12 @@ import { SocketContext } from "../App";
    
   export function ListCard() {
 
-    let socket = useContext(SocketContext);
-    let [ chatRoomUsers, setChatRoomUSers ] = useState([]);
+    const socket = useContext(SocketContext);
+    const [ chatRoomUsers, setChatRoomUSers ] = useState([]);
 
     useEffect(():any => {
       socket?.on('Room_users', (data)=>{
-        console.log(data);
         setChatRoomUSers(data)
-        console.log(chatRoomUsers)
       })
 
       return () => socket?.off('Room_users');

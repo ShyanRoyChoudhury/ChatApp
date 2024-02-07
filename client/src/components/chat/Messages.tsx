@@ -13,10 +13,10 @@ interface MessageComponentProps{
 }
 
 const Messages:React.FC<MessageComponentProps> = ({currentUser}) => {
-    let socket = useContext(SocketContext);
+    const socket = useContext(SocketContext);
     
-    let messageRef = useRef<HTMLDivElement>(null)
-    let [messagesReceived, setMessagesReceived ] = useState<MessageProps[]>([]);
+    const messageRef = useRef<HTMLDivElement>(null)
+    const [messagesReceived, setMessagesReceived ] = useState<MessageProps[]>([]);
 
     useEffect(():any =>{
         socket?.on('receive_message', (data)=>{
@@ -31,7 +31,6 @@ const Messages:React.FC<MessageComponentProps> = ({currentUser}) => {
             ])
         });
         socket?.on('messages', (data) => {
-            console.log(data),
             setMessagesReceived((state)=>[
                 ...state,
                 {
