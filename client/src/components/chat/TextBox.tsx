@@ -20,7 +20,7 @@ export default function TextBox({className}: TextBoxProps): React.ReactElement{
 
     const handleSendMessage = () => {
       if(text !== ''){
-        let _createdtime_ =  Date.now();
+        const _createdtime_ =  Date.now();
         socket?.emit('send_message', {
           name, room, text, _createdtime_
         });

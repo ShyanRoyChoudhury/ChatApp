@@ -7,24 +7,33 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../App";
    
+type userData = {
+  id?: number,
+  name: string
+}
+
   export function ListCard() {
 
     const socket = useContext(SocketContext);
-    const [ chatRoomUsers, setChatRoomUSers ] = useState([]);
+    const [ chatRoomUsers, setChatRoomUsers ] = useState<userData[]>([]);
 
-    useEffect(():any => {
-      socket?.on('Room_users', (data)=>{
-        setChatRoomUSers(data)
-      })
-
-      return () => socket?.off('Room_users');
-    }, [socket]);
+    useEffect(() => {
+      const handleRoomUsers = (data: userData[]) => {
+        setChatRoomUsers(data);
+      };
+    
+      socket?.on('Room_users', handleRoomUsers);
+    
+      return () => {
+        socket?.off('Room_users', handleRoomUsers);
+      };
+    }, [socket, setChatRoomUsers]);
 
     return (
       <Card className="h-60 overflow-y-auto w-full">
           {chatRoomUsers.length > 0 && <Typography variant="h5">Users:</Typography>}
         <List>
-          {chatRoomUsers.map((user:any) => (
+          {chatRoomUsers.map((user:userData) => (
             <ListItem 
               key={user.id}>
                 <div>

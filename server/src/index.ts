@@ -80,7 +80,6 @@ io.on('connection', (socket) =>{
         socket.on('leave_room', (data)=>{
             const { name, room } = data;
             socket.leave(room);
-            console.log('roomleft')
             
             let _createdtime_ = Date.now();
             allUsers = leaveRoom(socket.id, allUsers) //update the all users present in the room

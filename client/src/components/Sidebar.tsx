@@ -11,11 +11,11 @@ interface SidebarProps{
 }
 
 export const Sidebar:React.FC<SidebarProps> = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
-    let socket = useContext(SocketContext);
-    let name = useRecoilValue(usernameAtom);
-    let room = useRecoilValue(roomAtom);
+    const socket = useContext(SocketContext);
+    const name = useRecoilValue(usernameAtom);
+    const room = useRecoilValue(roomAtom);
     
     const leaveRoom = () => {
         socket?.emit('leave_room', {name, room})
@@ -24,7 +24,7 @@ export const Sidebar:React.FC<SidebarProps> = () => {
 
     useEffect(() => {
         const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-            let confirmationMessage = "Are you sure you want to leave? \nData might be lost!"
+            const confirmationMessage = "Are you sure you want to leave? \nData might be lost!"
 
             e.returnValue = confirmationMessage;
             return confirmationMessage

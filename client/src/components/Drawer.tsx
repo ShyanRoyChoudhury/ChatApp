@@ -18,14 +18,14 @@ import { roomAtom } from "../../store/atoms/roomState";
 export function DrawerComponent() {
   const [openRight, setOpenRight] = React.useState(false);
 
-  let socket = useContext(SocketContext);
-  let name = useRecoilValue(usernameAtom);
-  let room = useRecoilValue(roomAtom);
+  const socket = useContext(SocketContext);
+  const name = useRecoilValue(usernameAtom);
+  const room = useRecoilValue(roomAtom);
   
   const openDrawerRight = () => setOpenRight(true);
   const closeDrawerRight = () => setOpenRight(false);
  
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const leaveRoom = () => {
     socket?.emit('leave_room', {name, room})
     navigate('/');

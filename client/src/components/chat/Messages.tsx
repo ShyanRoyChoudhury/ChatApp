@@ -11,16 +11,20 @@ interface MessageProps{
 interface MessageComponentProps{
     currentUser: string;
 }
-
+interface messagesType{
+    message: string,
+    username: string,
+    _createdtime_: number
+}
 const Messages:React.FC<MessageComponentProps> = ({currentUser}) => {
     const socket = useContext(SocketContext);
     
     const messageRef = useRef<HTMLDivElement>(null)
     const [messagesReceived, setMessagesReceived ] = useState<MessageProps[]>([]);
 
-    useEffect(():any =>{
-        socket?.on('receive_message', (data)=>{
-            //console.log(data);
+    useEffect(() =>{
+
+        const handleMessage = (data: messagesType) => {
             setMessagesReceived((state)=>[
                 ...state,
                 {
@@ -29,16 +33,13 @@ const Messages:React.FC<MessageComponentProps> = ({currentUser}) => {
                     _createdtime_: data._createdtime_
                 }
             ])
+        }
+        socket?.on('receive_message', (data: messagesType)=>{
+            handleMessage(data)
+            
         });
-        socket?.on('messages', (data) => {
-            setMessagesReceived((state)=>[
-                ...state,
-                {
-                    message: data.message,
-                    username: data.username,
-                    _createdtime_: data._createdtime_
-                }
-            ])
+        socket?.on('messages', (data:messagesType) => {
+            handleMessage(data)
         })
 
         return () => {
